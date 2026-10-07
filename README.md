@@ -17,6 +17,7 @@ The application supports PDF manipulation, page management, text extraction, ima
 ## ✨ Features
 
 ### PDF Management
+
 - Merge multiple PDF files
 - Split a PDF into individual pages
 - Rotate selected pages
@@ -24,15 +25,18 @@ The application supports PDF manipulation, page management, text extraction, ima
 - Reorder PDF pages
 
 ### Content & Conversion
+
 - Extract text from PDF files
 - Convert PDF pages to images
 - Convert images to PDF
 
 ### Security & Customization
+
 - Add text watermarks
 - Password-protect PDF files
 
 ### Preview & Validation
+
 - Preview individual PDF pages
 - Display current PDF information
 - Validate PDF files before processing
@@ -85,6 +89,9 @@ algoryx-task-2-pdf-editor/
 ├── DOCUMENTATION.md
 ├── .gitignore
 └── LICENSE
+```
+
+---
 
 ## 📖 How to Use
 
@@ -194,4 +201,100 @@ Application logs are stored in:
 
 ```text
 logs/app.log
+```
 
+The logging system records application events and errors to help with troubleshooting.
+
+---
+
+## 🏗️ Architecture
+
+The application follows an object-oriented and modular structure.
+
+### `app.py`
+
+Application entry point responsible for launching the GUI.
+
+### `src/gui.py`
+
+Contains the graphical user interface and user interaction logic.
+
+### `src/pdf_operations.py`
+
+Contains the `PDFOperations` class responsible for PDF manipulation and conversion operations.
+
+### `src/utils.py`
+
+Contains utility functions for application logging.
+
+---
+
+## 📦 Requirements
+
+The main dependencies are:
+
+```text
+PyMuPDF
+pypdf
+Pillow
+pyinstaller
+```
+
+---
+
+## 🚀 Building the Executable
+
+The application can be packaged as a Windows executable using PyInstaller.
+
+```powershell
+pyinstaller --onefile --windowed --name PDFEditor app.py
+```
+
+The executable will be generated at:
+
+```text
+dist/PDFEditor.exe
+```
+
+---
+
+## ▶️ Running the Application
+
+### Install Dependencies
+
+```powershell
+pip install -r requirements.txt
+```
+
+### Run the Application
+
+```powershell
+python app.py
+```
+
+---
+
+## 🎯 Internship Task
+
+**Program:** Algoryx Python Internship
+
+**Week:** 2
+
+**Task:** PDF Editor Application
+
+The objective of this task is to develop a Python-based PDF Editor with a clean graphical interface and multiple functional PDF editing features.
+
+---
+
+## 👨‍💻 Author
+
+**C. Mallikarjun Reddy**
+
+GitHub:  
+https://github.com/Malli0208
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
