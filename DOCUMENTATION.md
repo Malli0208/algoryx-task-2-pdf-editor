@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-The PDF Editor Application is a Python-based desktop application designed to provide common PDF editing and management operations through a graphical user interface.
+The **PDF Editor Application** is a Python-based desktop application designed to provide common PDF editing and management operations through a graphical user interface.
 
 The project was developed as part of the **Algoryx Python Internship – Week 2 Task 2**.
 
@@ -31,7 +31,7 @@ The main objectives of the project are:
 |---|---|
 | Python | Application development |
 | Tkinter | Graphical user interface |
-| PyMuPDF | PDF processing, rendering and conversion |
+| PyMuPDF | PDF processing, rendering, and conversion |
 | pypdf | PDF page manipulation and password protection |
 | Pillow | Image processing |
 | PyInstaller | Windows executable generation |
@@ -88,7 +88,7 @@ Renders and displays a selected PDF page for preview.
 
 ### 4.12 PDF Validation
 
-Checks whether a selected PDF can be opened and processed successfully and provides an error message when the PDF is invalid or corrupted.
+Checks whether a selected PDF can be opened and processed successfully. If the PDF is invalid or corrupted, the application displays an appropriate error message.
 
 ---
 
@@ -114,18 +114,31 @@ algoryx-task-2-pdf-editor/
 ├── DOCUMENTATION.md
 ├── .gitignore
 └── LICENSE
+```
+
+---
 
 ## 6. Module Description
-app.py
+
+### 6.1 `app.py`
+
 The main entry point of the application.
-Responsibilities:
+
+**Responsibilities:**
+
 - Configure application logging
 - Create the Tkinter root window
 - Initialize the PDF Editor GUI
 - Start the Tkinter event loop
-src/gui.py
-Contains the PDFEditorGUI class.
-Responsibilities:
+
+---
+
+### 6.2 `src/gui.py`
+
+Contains the `PDFEditorGUI` class.
+
+**Responsibilities:**
+
 - Build the graphical interface
 - Handle user interactions
 - Open PDF files
@@ -134,9 +147,15 @@ Responsibilities:
 - Display extracted text
 - Display page previews
 - Show success and error messages
-src/pdf_operations.py
-Contains the PDFOperations class.
-Responsibilities:
+
+---
+
+### 6.3 `src/pdf_operations.py`
+
+Contains the `PDFOperations` class responsible for the core PDF processing functionality.
+
+**Responsibilities:**
+
 - Merge PDFs
 - Split PDFs
 - Rotate pages
@@ -149,85 +168,172 @@ Responsibilities:
 - Password-protect PDFs
 - Validate PDF files
 - Get PDF page counts
-src/utils.py
+
+---
+
+### 6.4 `src/utils.py`
+
 Contains application utility functions.
-Responsibilities:
-- Configure logging
-- Record application information
+
+**Responsibilities:**
+
+- Configure application logging
+- Record informational messages
 - Record application errors
 
+---
+
 ## 7. Object-Oriented Design
-The application uses object-oriented programming to separate responsibilities.
+
+The application uses object-oriented programming to separate the graphical interface from the PDF processing logic.
+
 The main classes are:
+
+```text
 PDFOperations
       |
       └── PDF processing operations
 
+
 PDFEditorGUI
       |
       └── Graphical interface and user interaction
+```
 
-This separation keeps the user interface independent from the core PDF processing logic.
+This separation makes the application easier to maintain and extend.
+
+---
 
 ## 8. Error Handling
+
 The application uses exception handling to prevent unexpected failures during PDF operations.
+
 Examples of handled situations include:
+
 - Invalid PDF files
 - Corrupted PDF files
 - Missing files
 - Invalid page numbers
 - Invalid user input
 - PDF processing failures
-When an operation fails, the GUI displays an appropriate message to the user instead of terminating unexpectedly.
+
+When an operation fails, the GUI displays an appropriate error message instead of terminating unexpectedly.
+
+---
 
 ## 9. Logging
-The application includes a logging system implemented in src/utils.py.
+
+The application includes a logging system implemented in `src/utils.py`.
+
 Log files are stored in:
+
+```text
 logs/app.log
+```
 
 Logging is used to record:
+
 - Application startup
 - Informational events
 - Application errors
+
 This helps with troubleshooting and debugging.
 
+---
+
 ## 10. PDF Validation
+
 Before processing an opened PDF, the application validates the document.
+
 The validation process checks whether the PDF can be successfully opened.
-If the PDF is invalid or corrupted, the application displays an error message and prevents further processing of that file.
+
+If the PDF is invalid or corrupted:
+
+1. The application detects the problem.
+2. The user receives an error message.
+3. Further processing of the invalid PDF is prevented.
+
+This provides graceful handling of corrupted or invalid PDF files.
+
+---
 
 ## 11. Executable Build
-The application can be packaged into a standalone Windows executable using PyInstaller.
-Build command:
+
+The application can be packaged into a standalone Windows executable using **PyInstaller**.
+
+### Build Command
+
+```powershell
 pyinstaller --onefile --windowed --name PDFEditor app.py
+```
 
 The generated executable is:
+
+```text
 dist/PDFEditor.exe
+```
 
 The executable was successfully generated and tested to launch the graphical application.
 
+---
+
 ## 12. Installation
-Requirements
+
+### Requirements
+
 - Python 3.11 or later
 - Windows operating system
 - Required Python packages
-Install dependencies using:
+
+### Install Dependencies
+
+```powershell
 pip install -r requirements.txt
+```
+
+---
 
 ## 13. Running the Application
-Activate the virtual environment:
-venv\Scripts\Activate.ps1
 
-Run the application:
+### Activate the Virtual Environment
+
+On Windows PowerShell:
+
+```powershell
+venv\Scripts\Activate.ps1
+```
+
+### Run the Application
+
+```powershell
 python app.py
+```
+
+The PDF Editor graphical interface will open.
+
+---
 
 ## 14. Running the Executable
-After building the application with PyInstaller:
-dist/PDFEditor.exe
 
-The executable can be launched directly without running python app.py.
+After building the application with PyInstaller, the executable will be available at:
+
+```text
+dist/PDFEditor.exe
+```
+
+The executable can be launched directly without running:
+
+```powershell
+python app.py
+```
+
+---
+
 ## 15. User Workflow
-The general workflow is:
+
+The general workflow of the application is:
+
+```text
 Launch Application
        ↓
 Open PDF
@@ -241,15 +347,24 @@ Process PDF
 Choose Output Location
        ↓
 Save Result
+```
 
-For operations such as Merge PDFs and Image → PDF, the application allows the required input files to be selected directly.
+For operations such as **Merge PDFs** and **Image → PDF**, the application allows the required input files to be selected directly.
+
+---
 
 ## 16. Security
+
 The application provides password protection functionality for PDF files.
-Users can enter a password through the graphical interface and generate a protected PDF.
+
+Users can enter a password through the graphical interface and generate a protected PDF document.
+
+---
 
 ## 17. Project Quality
+
 The project follows the main development practices required for the internship task:
+
 - Object-oriented programming
 - Modular architecture
 - Readable folder structure
@@ -261,8 +376,12 @@ The project follows the main development practices required for the internship t
 - Project documentation
 - Git version control
 
+---
+
 ## 18. Future Improvements
+
 Potential future improvements include:
+
 - Drag-and-drop PDF support
 - Thumbnail-based page navigation
 - Dark and light themes
@@ -272,13 +391,45 @@ Potential future improvements include:
 - Batch PDF processing
 - Additional PDF security options
 
+---
+
 ## 19. Internship Information
-Program: Algoryx Python Internship
-Week: 2
-Task: PDF Editor Application
-Developer: C. Mallikarjun Reddy
+
+| Field | Details |
+|---|---|
+| Program | Algoryx Python Internship |
+| Week | Week 2 |
+| Task | PDF Editor Application |
+| Developer | C. Mallikarjun Reddy |
+
+---
 
 ## 20. Conclusion
-The PDF Editor Application provides a graphical desktop solution for performing common PDF editing, conversion, preview, text extraction, watermarking, and security operations.
-The project demonstrates Python programming, object-oriented design, modular architecture, GUI development, PDF processing, exception handling, logging, and executable packaging.
+
+The **PDF Editor Application** provides a graphical desktop solution for performing common PDF editing, conversion, preview, text extraction, watermarking, and security operations.
+
+The project demonstrates:
+
+- Python programming
+- Object-oriented design
+- Modular architecture
+- GUI development
+- PDF processing
+- Image processing
+- Exception handling
+- Logging
+- Executable packaging
+- Git version control
+- Project documentation
+
+The application fulfills the core requirements of the **Algoryx Python Internship – Week 2 PDF Editor Application task**.
+
+---
+
+## Author
+
+**C. Mallikarjun Reddy**
+
+GitHub:  
+https://github.com/Malli0208
 
